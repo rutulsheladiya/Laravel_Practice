@@ -24,4 +24,29 @@ class UserController extends Controller
     // {
     //     return view("userProfile",["userId"=>$id,"userName"=>$name]);
     // }
+
+    // =================================
+    // function for blade template
+    function loadView()
+    {
+        //   return view("users",["name"=>"Rutul"]);
+        // return view("users",["names"=>"Rutul"]);
+        // $data = ['Rutul', 'Ravi', 'Purvish','Priyank'];
+
+        // convert json data into php array
+        //$jsonData = '{"firstName": "John","lastName": "Doe","age": 50,"eyeColor": "blue"}';
+        // $arr = json_decode($jsonData,true);
+        // dd($arr);
+
+        // convert php array into json object
+        $data = array(
+            "id" => 1,
+            "name" => "Rutul",
+            "mobile" => 8320893080
+        );
+        // $json = json_encode($data, true);
+        // dd($json);
+
+        return view('users', ["name" => $data]);
+    }
 }

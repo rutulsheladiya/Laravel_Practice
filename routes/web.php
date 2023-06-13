@@ -3,6 +3,8 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Models\User;
+    use Illuminate\Http\Request;
+    use App\Http\Controllers\register;
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +66,7 @@
         }
     });
 
-
+// ==========================================
     // controller
     Route::get("/user", [UserController::class, 'userData']);
     Route::get("/profile/{id}/{name}", [UserController::class, 'showProfile']);
@@ -77,3 +79,23 @@
     //     Route::get("/user", 'userData');
     //     Route::get("/profile/{id?}/{name?}", 'showProfile');
     // });
+
+
+// ==========================================
+// Blade template
+Route ::get('users',[UserController::class,'loadView']);
+
+// ==========================================
+
+// HTMl form Register Route
+Route::get("/register",function(){
+    return view("register");
+});
+
+// handle POST route after submitting the data.
+// Route::POST("/register",function(Request $req){
+//     return $req->all();
+// });
+
+// handle POST method after submitting the data using controller.
+Route::POST("/register",[register::class,"getData"]);

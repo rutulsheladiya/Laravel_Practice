@@ -1,4 +1,4 @@
-<x-Header/>
+<x-Header componentName="Post"/>
 <!-- <?php echo "User Id Is  : ". $userId; ?>  -->
 
 @if($userId == NULL)
