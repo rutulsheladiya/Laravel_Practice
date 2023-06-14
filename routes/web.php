@@ -66,7 +66,7 @@
         }
     });
 
-// ==========================================
+    // ==========================================
     // controller
     Route::get("/user", [UserController::class, 'userData']);
     Route::get("/profile/{id}/{name}", [UserController::class, 'showProfile']);
@@ -81,28 +81,37 @@
     // });
 
 
-// ==========================================
-// Blade template
-Route ::get('users',[UserController::class,'loadView']);
+    // ==========================================
+    // Blade template
+    Route::get('users', [UserController::class, 'loadView']);
 
-// ==========================================
+    // ==========================================
 
-// HTMl form Register Route
-Route::get("/register",function(){
-    return view("register");
-});
+    // HTMl form Register Route
+    Route::get("/register", function () {
+        return view("register");
+    });
 
-// handle POST route after submitting the data.
-// Route::POST("/register",function(Request $req){
-//     return $req->all();
-// });
+    // handle POST route after submitting the data.
+    // Route::POST("/register",function(Request $req){
+    //     return $req->all();
+    // });
 
-// handle POST method after submitting the data using controller.
-Route::POST("/register",[register::class,"getData"]);
+    // handle POST method after submitting the data using controller.
+    Route::POST("/register", [register::class, "getData"]);
 
-// =================================================
-// middleware
-// route for no access page
-Route::get('/noaccess',function(){
-    return view("noaccess");
-});
+    // =================================================
+    // middleware
+    // route for no access page
+    Route::get('/noaccess', function () {
+        return view("noaccess");
+    });
+
+    Route::group(['middleware' => ['protectPage']], function () {
+        Route::get('/bankdetails1', function () {
+            return view("bankdetails1");
+        });
+        Route::get("/bankdetails2", function () {
+            return view("bankdetails2");
+        });
+    });
