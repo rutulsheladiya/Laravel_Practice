@@ -5,7 +5,7 @@
     use App\Models\User;
     use Illuminate\Http\Request;
     use App\Http\Controllers\register;
-
+    // use App\Http\Middleware\CheckAge;
     /*
     |--------------------------------------------------------------------------
     | Web Routes
@@ -107,11 +107,17 @@
         return view("noaccess");
     });
 
-    Route::group(['middleware' => ['protectPage']], function () {
-        Route::get('/bankdetails1', function () {
-            return view("bankdetails1");
-        });
-        Route::get("/bankdetails2", function () {
-            return view("bankdetails2");
-        });
-    });
+    // group middlware
+    // Route::group(['middleware' => ['protectPage']], function () {
+    //     Route::get('/bankdetails1', function () {
+    //         return view("bankdetails1");
+    //     });
+    //     Route::get("/bankdetails2", function () {
+    //         return view("bankdetails2");
+    //     });
+    // });
+
+    // route middleware
+    Route::get("/bankdetails2", function () {
+        return view("bankdetails2");
+    })->middleware('protectedPage');
