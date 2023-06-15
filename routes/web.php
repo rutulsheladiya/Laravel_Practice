@@ -92,6 +92,7 @@
         return view("register");
     });
 
+
     // handle POST route after submitting the data.
     // Route::POST("/register",function(Request $req){
     //     return $req->all();
