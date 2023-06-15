@@ -122,3 +122,6 @@
     Route::get("/bankdetails2", function () {
         return view("bankdetails2");
     })->middleware('protectedPage');
+
+
+    Route::view('/facade','facade');
