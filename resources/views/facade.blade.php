@@ -115,5 +115,7 @@ Steps:
 8. Display the output.
 */
 
+Cache::set('name', 'Rutul');
+dd(Cache::get('name')); 
 ?>
 

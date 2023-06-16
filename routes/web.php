@@ -124,4 +124,16 @@
     })->middleware('protectedPage');
 
 
-    Route::view('/facade','facade');
+    // route of facade page
+    Route::view('/facade', 'facade');
+
+    // route of custom facade page
+    Route::get('customFacade',function(){
+        return view("customFacade");
+    });
+
+    // dependencyinjection route
+    Route::view('/dependencyinjection','dependencyinjection');
+
+
+

@@ -1,9 +1,9 @@
-<x-Header componentName="Home"/>
+<x-Header componentName="Home" />
 <h3 class="text-center">Welcome Page</h3>
 <a href="/about">About Us</a>
 <a href="/contact">Contact Us</a>
 
-<?php 
+<?php
 //bind a function to service container
 // app()->bind("myfunction",function(){
 //     return "This is my function";
@@ -14,13 +14,15 @@
 //dd(app()->make('myfunction'));
 // dd(app());
 
-//called defrred service 
+//called defrred service
 //validator();
 // dd(app());
 
 // create service provider in app/provider
 // dd(app()->make('NewFunction'));
-validator();
-dd(app());
+// validator();
+// dd(app());
+
+
 ?>
-<x-Footer/>
+<x-Footer />
