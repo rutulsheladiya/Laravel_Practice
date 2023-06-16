@@ -2,9 +2,12 @@
 
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
+    use App\Http\Controllers\TestSingleActionController;
     use App\Models\User;
     use Illuminate\Http\Request;
     use App\Http\Controllers\register;
+use App\Models\Product;
+
     // use App\Http\Middleware\CheckAge;
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +58,7 @@
     //     }else{
     //         return "<h3>Id Is : ".$id."</h3>";
     //     }
-    // }); 
+    // });
 
     // 4)
     Route::get("/post/{id?}", function ($id = null) {
@@ -128,12 +131,24 @@
     Route::view('/facade', 'facade');
 
     // route of custom facade page
-    Route::get('customFacade',function(){
+    Route::get('customFacade', function () {
         return view("customFacade");
     });
 
     // dependencyinjection route
-    Route::view('/dependencyinjection','dependencyinjection');
+    Route::view('/dependencyinjection', 'dependencyinjection');
 
 
 
+
+
+
+    //========================================================================================================
+    // Sigle Action Controller
+    Route::get('singleActionController', TestSingleActionController::class);
+
+    //========================================================================================================
+    // resource controller with modal
+    // testForm blade
+    Route::view('/testForm', 'testForm');
+    Route::resource('product',Product::class);
