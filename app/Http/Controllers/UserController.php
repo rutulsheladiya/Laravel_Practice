@@ -76,4 +76,9 @@ class UserController extends Controller
         // print_r($allData);
         return view('httpclient',['collection'=>$allData]);
     }
+
+    function httpRequestMethod(Request $request){
+        // return "Form Submitted";
+        return $request->all();
+    }
 }
