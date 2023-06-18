@@ -135,5 +135,9 @@
     // dependencyinjection route
     Route::view('/dependencyinjection','dependencyinjection');
 
+    // Route for httpclient blade & usercontroller callApi function
+    Route::view("httpclientview","httpclient");
+    Route::get("httpclientview",[UserController::class,"callApi"]);
+
 
 
