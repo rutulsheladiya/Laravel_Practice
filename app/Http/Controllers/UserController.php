@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use function Ramsey\Uuid\v1;
 
+// for calling api
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\Response;
+
 class UserController extends Controller
 {
     public function userData()
@@ -48,5 +52,33 @@ class UserController extends Controller
         // dd($json);
 
         return view('users', ["name" => $data]);
+    }
+
+    public function callApi()
+    {
+        // first Api
+        // $data = Http::timeout(5)->get("https://reqres.in/api/users?page=1");
+        // //    echo "<pre>";
+        // //    $allData = $data['data'];
+        // //    print_r($allData);
+        // //    die;
+        // $data = ["collection" => $data["data"]];
+        // return view("httpclient", $data);
+
+        // Second API
+
+        $data = Http::get("https://reqres.in/api/register");
+        // echo "<pre>";
+        // print_r(json_decode($data,true));
+        // die;
+        $allData = $data['data'];
+        // echo "<pre>";
+        // print_r($allData);
+        return view('httpclient',['collection'=>$allData]);
+    }
+
+    function httpRequestMethod(Request $request){
+        // return "Form Submitted";
+        return $request->all();
     }
 }

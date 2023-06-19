@@ -6,8 +6,9 @@
     use App\Models\User;
     use Illuminate\Http\Request;
     use App\Http\Controllers\register;
-use App\Models\Product;
+    use App\Models\Product;
 
+    use App\Http\Controllers\UserAuth;
     // use App\Http\Middleware\CheckAge;
     /*
     |--------------------------------------------------------------------------
@@ -138,6 +139,17 @@ use App\Models\Product;
     // dependencyinjection route
     Route::view('/dependencyinjection', 'dependencyinjection');
 
+    // Route for httpclient blade & usercontroller callApi function
+    Route::view("httpclientview", "httpclient");
+    Route::get("httpclientview", [UserController::class, "callApi"]);
+
+    // Route for httpRequestMethod & it's controller
+    Route::view("httpRequestMethod", "httpRequestMethod");
+    // Route::POST('action',[UserController::class,'httpRequestMethod']);
+    // PUT Route
+    // Route::put('action',[UserController::class,'httpRequestMethod']);
+    // Delete Route
+    // Route::delete("action",[UserController::class,'httpRequestMethod']);
 
 
 
@@ -151,4 +163,15 @@ use App\Models\Product;
     // resource controller with modal
     // testForm blade
     Route::view('/testForm', 'testForm');
-    Route::resource('product',Product::class);
+    Route::resource('product', Product::class);
+    // ================================================================
+
+    // Sessions Example
+    Route::get('login', function () {
+        return view('session/login');
+    });
+    // UserAuth Controller UserLogin function Route
+    Route::post('senddata', [UserAuth::class, 'userLogin']);
+    Route::get('profile', function () {
+        return view('profile');
+    });
