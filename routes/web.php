@@ -204,3 +204,11 @@ Route::view('storeuser','session/storeuser');
 
 //Store controller   function
 Route::post('senduserdata',[StoreController::class,'StoreUser']);
+
+
+//========================================================================================================
+// Url generattion
+
+Route::view('first', 'urlgeneration/first');
+Route::view('second', 'urlgeneration/second');
+Route::view('third', 'urlgeneration/third');

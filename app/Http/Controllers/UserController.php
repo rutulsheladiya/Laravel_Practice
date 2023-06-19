@@ -56,7 +56,7 @@ class UserController extends Controller
 
     public function callApi()
     {
-        // first Api
+       // first Api
         // $data = Http::timeout(5)->get("https://reqres.in/api/users?page=1");
         // //    echo "<pre>";
         // //    $allData = $data['data'];
