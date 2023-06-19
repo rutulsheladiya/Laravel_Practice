@@ -9,6 +9,7 @@
     use App\Models\Product;
 
     use App\Http\Controllers\UserAuth;
+    use App\Http\Controllers\StoreController;
     // use App\Http\Middleware\CheckAge;
     /*
     |--------------------------------------------------------------------------
@@ -164,7 +165,7 @@
     // testForm blade
     Route::view('/testForm', 'testForm');
     Route::resource('product', Product::class);
-    // ================================================================
+    //========================================================================================================
 
     // Sessions Example
 
@@ -194,3 +195,12 @@
             return redirect('login');
         }
     });
+
+//========================================================================================================
+
+ // Flash Session => flash session me je data store kariye te at a one time mate j store thay page refresh thay atle data delete thay jay.
+//  store user route
+Route::view('storeuser','session/storeuser');
+
+//Store controller   function
+Route::post('senduserdata',[StoreController::class,'StoreUser']);
