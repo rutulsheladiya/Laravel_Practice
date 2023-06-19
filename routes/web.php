@@ -167,11 +167,30 @@
     // ================================================================
 
     // Sessions Example
+
     Route::get('login', function () {
+        if (session()->has('username')) {
+            return redirect('profile');
+        }
         return view('session/login');
     });
+
     // UserAuth Controller UserLogin function Route
     Route::post('senddata', [UserAuth::class, 'userLogin']);
-    Route::get('profile', function () {
-        return view('profile');
+
+    // profile page Route
+    Route::get('/profile', function () {
+        if (!session()->has('username')) {
+            return redirect('login');
+        }
+        return view('session/profile');
+    });
+
+    //logout route
+    Route::get('/logout', function () {
+        if (session()->has('username')) {
+            // session()->pull('username',null);
+            session()->flush();
+            return redirect('login');
+        }
     });

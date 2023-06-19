@@ -28,7 +28,7 @@ class Product extends Controller
      */
     public function store(Request $request)
     {
-       echo "Store";
+        echo "Store";
     }
 
     /**

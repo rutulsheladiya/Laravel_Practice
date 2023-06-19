@@ -25,9 +25,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="" class="my-3">Role</label>
+                        <input type="text" name="role" placeholder="Enter Role" class="form-control">
+                    </div>
+
+                    <div class="form-group">
                         <label for="" class="my-3">Enter Password</label>
                         <input type="password" name="password" placeholder="Enter Password" class="form-control">
                     </div>
+
 
                     <div class="form-group text-center my-3">
                         <button class="btn btn-success" type="submit">Submit</button>
