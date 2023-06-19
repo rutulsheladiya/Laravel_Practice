@@ -10,6 +10,7 @@
 
     use App\Http\Controllers\UserAuth;
     use App\Http\Controllers\StoreController;
+    use App\Http\Controllers\RequestController;
     // use App\Http\Middleware\CheckAge;
     /*
     |--------------------------------------------------------------------------
@@ -212,3 +213,22 @@ Route::post('senduserdata',[StoreController::class,'StoreUser']);
 Route::view('first', 'urlgeneration/first');
 Route::view('second', 'urlgeneration/second');
 Route::view('third', 'urlgeneration/third');
+
+
+//========================================================================================================
+//Request Page Route
+Route::view('request', 'Request/request');
+// Route::post('sendRequestdata',[RequestController::class,'requestData']);
+
+// pass id from the router and catch it in the controller
+Route::get('sendRequestdata/{id}',[RequestController::class,'Index2']);
+
+// path inspection
+Route::get("/admin/one",[RequestController::class,'Index3']);
+Route::get("/admin/two",[RequestController::class,'Index3']);
+Route::get("/guest/one",[RequestController::class,'Index3']);
+Route::get("/guest/two",[RequestController::class,'Index3']);
+
+// Named Route
+Route::get("/adminn/one",[RequestController::class,'Index4'])->name('admin.one');
+Route::get("/guestt/two",[RequestController::class,'Index4'])->name('guest.two');
