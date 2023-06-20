@@ -11,7 +11,8 @@
     use App\Http\Controllers\UserAuth;
     use App\Http\Controllers\StoreController;
     use App\Http\Controllers\RequestController;
-use Symfony\Component\Routing\RequestContext;
+    use Symfony\Component\Routing\RequestContext;
+    use App\Http\Controllers\ResponseController;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -199,41 +200,89 @@ use Symfony\Component\Routing\RequestContext;
         }
     });
 
+
+
+    //========================================================================================================
+
+    // Flash Session => flash session me je data store kariye te at a one time mate j store thay page refresh thay atle data delete thay jay.
+    //  store user route
+    Route::view('storeuser', 'session/storeuser');
+
+    //Store controller   function
+    Route::post('senduserdata', [StoreController::class, 'StoreUser']);
+
+
+    //========================================================================================================
+    // Url generattion
+
+    Route::view('first', 'urlgeneration/first');
+    Route::view('second', 'urlgeneration/second');
+    Route::view('third', 'urlgeneration/third');
+
+
+    //========================================================================================================
+    //Request Page Route
+    Route::view('request', 'Request/request');
+    Route::post('sendRequestdata', [RequestController::class, 'requestData']);
+
+    // pass id from the router and catch it in the controller
+    //Route::get('sendRequestdata/{id}',[RequestController::class,'Index2']);
+
+    // path inspection
+    Route::get("/admin/one", [RequestController::class, 'Index3']);
+    Route::get("/admin/two", [RequestController::class, 'Index3']);
+    Route::get("/guest/one", [RequestController::class, 'Index3']);
+    Route::get("/guest/two", [RequestController::class, 'Index3']);
+
+    // Named Route
+    Route::get("/adminn/one", [RequestController::class, 'Index4'])->name('adminn.one');
+    Route::get("/guestt/two", [RequestController::class, 'Index4'])->name('guestt.two');
+
+    // Retriving Input Data Route with controller
+    Route::post('sendinputdata', [RequestController::class, 'getFormData']);
+
 //========================================================================================================
 
- // Flash Session => flash session me je data store kariye te at a one time mate j store thay page refresh thay atle data delete thay jay.
-//  store user route
-Route::view('storeuser','session/storeuser');
+//HTTP Response
+// Response Page route
 
-//Store controller   function
-Route::post('senduserdata',[StoreController::class,'StoreUser']);
+// 1) return a simple string data
+// Route::get('response',function(){
+//    return "this is simple response";
+// });
 
+// 2) Return a array
+// Route::get('response',function(){
+//    return ['first','second',3,4,"five","six","seven"];
+// });
 
-//========================================================================================================
-// Url generattion
+//3) Using response()
+// Route::get('response',function(){
+//    dd(response("this is response using response method"));
+// });
 
-Route::view('first', 'urlgeneration/first');
-Route::view('second', 'urlgeneration/second');
-Route::view('third', 'urlgeneration/third');
+//4) Using response() pass header
+// Route::get('response',function(){
+//    dd(response("this is response using response method")
+//    ->header('Content-Type',"application/json"))
+//    ->header('Authorization', 'token');
+// });
 
+//5) if we want to pass multiple header then we can pass it using withheader()
+// Route::get('response',function(){
+//     return dd(response("this is simple response using response method with headers")->withHeaders([
+//         'Content-Type'=>"application/json",
+//         'Authorization'=> 'token'
+//     ]));
+// });
 
-//========================================================================================================
-//Request Page Route
-Route::view('request', 'Request/request');
-Route::post('sendRequestdata',[RequestController::class,'requestData']);
+// 6) set cookie in response
+// Route::get('response',function(){
+//     return dd(response("this is simple response using response method with headers")->withCookie('userName','Rutul Sheladiya',180));
+// });
 
-// pass id from the router and catch it in the controller
-//Route::get('sendRequestdata/{id}',[RequestController::class,'Index2']);
+// 7) redirect('viewname') => it is used to redirect on the other page.
 
-// path inspection
-Route::get("/admin/one",[RequestController::class,'Index3']);
-Route::get("/admin/two",[RequestController::class,'Index3']);
-Route::get("/guest/one",[RequestController::class,'Index3']);
-Route::get("/guest/two",[RequestController::class,'Index3']);
-
-// Named Route
-Route::get("/adminn/one",[RequestController::class,'Index4'])->name('adminn.one');
-Route::get("/guestt/two",[RequestController::class,'Index4'])->name('guestt.two');
-
-// Retriving Input Data Route with controller
-Route::post('sendinputdata',[RequestController::class,'getFormData']);
+Route::view('/response','response');
+Route::get('dataresponse',[ResponseController::class,'index']);
+Route::get('registerTest',[register::class,'test']);

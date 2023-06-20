@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 // use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\Rule; 
+use Illuminate\Validation\Rule;
 
 class register extends Controller
 {
     function getData(Request $req)
-    {  
+    {
         // set validation custom msg
         $req->validate([
             'name'=>'required',
@@ -52,10 +52,15 @@ class register extends Controller
         //      // 'mobile'=>'required|numeric|min:10|max:10'
         //     // 'password'=> ['required','confirmed' , Password::min(1)->letters(),Password::min(1)->mixedCase(),Password::min(1)->numbers(),Password::min(1)->symbols()]
         // ]);
-        
+
         return $req->input();
         // return $req->all();
         // echo "<pre>";
         // print_r($req->input());
+    }
+
+    public function test()
+    {
+        return "Test called";
     }
 }
