@@ -286,3 +286,11 @@
 Route::view('/response','response');
 Route::get('dataresponse',[ResponseController::class,'index']);
 Route::get('registerTest',[register::class,'test']);
+
+//========================================================================================================//================================================================================================================================================================================================================
+
+// localization
+Route::get('localizationExample/{lang}',function($lang){
+    App::setlocale($lang);
+    return view('localization');
+});
