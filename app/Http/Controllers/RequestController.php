@@ -30,8 +30,9 @@ class RequestController extends Controller
         //        dd("true");
         // } // accepts method no use thase ke apde specific format na data j jota hoy to je data male che tene check karva mate accepts method use thase.
 
-        dd($request->query()); // jo url ma jetli value ave che te badhi fetch karvi hoy to query() array na form ma badhu quuery string return karse.
+        //dd($request->query()); // jo url ma jetli value ave che te badhi fetch karvi hoy to query() array na form ma badhu quuery string return karse.
         //dd($request->query('name','default set'));  //url ma je query string or id haise tene fetch karse. jo url ma kai nai hoy to null apde pan apde default pan set kari shakiye.
+        dd($request->host());
     }
     public function Index2(Request $request, $id)
     {
@@ -52,10 +53,70 @@ class RequestController extends Controller
     // for name route
     public function Index4(Request $request)
     {
-        if ($request->is('admin/*')) {
+        if ($request->routeIs('adminn.*')) {
             dd("admin area for name route");
         } else {
             dd("Guest area for name route");
         }
+
+        // dd($request->routeIs('adminn.one'));  => jo name route sathe mathch thase to true apse nkr false
+    }
+
+    public function getFormData(Request $request)
+    {
+        dump($request->all());
+        dump($request->input());
+        dump($request->collect());
+
+        // * fetch the date */
+         //dump($request->date('bdy'));
+
+        // * a method check karse field mathi data ave che ke nai */
+        // if($request->filled('username')){
+        //  echo "name ave che";
+        // }else{
+        //     echo "nthi avtu";
+        // }
+
+
+        // * fetch img from input * //
+        // dump($request->file('profile'));
+        // dump($request->profile);
+        //echo $request->profile;
+        // if($request->file('profile')->isValid()){
+        //     echo "valid";
+        // }else{
+        //     echo "not valid";
+        // }
+
+        // * give path of img */
+        // $path = $request->profile->path();
+        // echo $path;
+
+        // * extension of img */
+        // $ext = $request->profile->extension();
+        // echo $ext;
+
+        // * check krse request ma img ave che ke nai */
+        // if ($request->hasFile('profile')) {
+        //     echo "photo che";
+        // } else {
+        //     echo "nthi";
+        // }
+
+
+        // * store image in folder * //
+        // dump($request->file('profile'));
+        // $path = $request->profile->store('Media');
+        // echo $path;
+
+
+        // * store multiple image in folder * //
+        // dump($request->file('profile'));
+        // foreach ($request->file('profile') as $file) {
+        //     $path = $file->store('Media');
+        //     $paths[] = $path;
+        // }
+        // print_r($path);
     }
 }
