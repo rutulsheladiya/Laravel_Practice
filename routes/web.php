@@ -13,6 +13,7 @@
     use App\Http\Controllers\RequestController;
     use Symfony\Component\Routing\RequestContext;
     use App\Http\Controllers\ResponseController;
+    use App\Http\Controllers\DatabaseData;
 use Illuminate\Support\Facades\Log;
 
     // use App\Http\Middleware\CheckAge;
@@ -316,3 +317,12 @@ Route::get('checkerrorlog',function(){
 // Route of custom log in blade file
 // Route::view('mylog','CustomLog/mylog');
 
+//========================================================================================================//================================================================================================================================================================================================================
+//========================================================================================================//================================================================================================================================================================================================================
+//1) fetch data from database using controller
+Route::get('fetchdata',[UserController::class,'fetchDbData']);
+
+
+//2) fetch data from table and stotre it in table in blade file
+//Route::view('studentlist', 'DatabaseData/studentlist');
+Route::get('studentlist',[DatabaseData::class,'fetchdata']);

@@ -10,6 +10,8 @@ use function Ramsey\Uuid\v1;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\Response;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     public function userData()
@@ -80,5 +82,12 @@ class UserController extends Controller
     function httpRequestMethod(Request $request){
         // return "Form Submitted";
         return $request->all();
+    }
+
+    function fetchDbData(){
+        // echo "Hello";
+        // echo "<pre>";
+        // print_r((DB::select("select * from employee")));
+          return DB::select("select * from employee");
     }
 }
