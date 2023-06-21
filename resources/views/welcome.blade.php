@@ -1,3 +1,5 @@
+{{-- @vite('/resources/Assets/style.css'); --}}
+{{-- @vite('resources/js/app.js'); --}}
 <x-Header componentName="Home" />
 <h3 class="text-center">Welcome Page</h3>
 <a href="/about">About Us</a>
