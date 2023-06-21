@@ -13,6 +13,7 @@
     use App\Http\Controllers\RequestController;
     use Symfony\Component\Routing\RequestContext;
     use App\Http\Controllers\ResponseController;
+use Illuminate\Support\Facades\Log;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -49,9 +50,9 @@
     // Route::get("/post/{id}",function($id){
     //   return view("post",["userId" => $id]);
     // });
+    // aama jo apde post lakhi ne id pass nahi kariye to page not fount ni error avse
 
     // 2)
-    // aama jo apde post lakhi ne id pass nahi kariye to page not fount ni error avse
     // Route::get("/post/{id}",function($id){
     //     return "<h3>Id Is : ".$id."</h3>";
     // });
@@ -241,56 +242,77 @@
     // Retriving Input Data Route with controller
     Route::post('sendinputdata', [RequestController::class, 'getFormData']);
 
-//========================================================================================================
+    //========================================================================================================
 
-//HTTP Response
-// Response Page route
+    //HTTP Response
+    // Response Page route
 
-// 1) return a simple string data
-// Route::get('response',function(){
-//    return "this is simple response";
+    // 1) return a simple string data
+    // Route::get('response',function(){
+    //    return "this is simple response";
+    // });
+
+    // 2) Return a array
+    // Route::get('response',function(){
+    //    return ['first','second',3,4,"five","six","seven"];
+    // });
+
+    //3) Using response()
+    // Route::get('response',function(){
+    //    dd(response("this is response using response method"));
+    // });
+
+    //4) Using response() pass header
+    // Route::get('response',function(){
+    //    dd(response("this is response using response method")
+    //    ->header('Content-Type',"application/json"))
+    //    ->header('Authorization', 'token');
+    // });
+
+    //5) if we want to pass multiple header then we can pass it using withheader()
+    // Route::get('response',function(){
+    //     return dd(response("this is simple response using response method with headers")->withHeaders([
+    //         'Content-Type'=>"application/json",
+    //         'Authorization'=> 'token'
+    //     ]));
+    // });
+
+    // 6) set cookie in response
+    // Route::get('response',function(){
+    //     return dd(response("this is simple response using response method with headers")->withCookie('userName','Rutul Sheladiya',180));
+    // });
+
+    // 7) redirect('viewname') => it is used to redirect on the other page.
+
+    Route::view('/response', 'response');
+    Route::get('dataresponse', [ResponseController::class, 'index']);
+    Route::get('registerTest', [register::class, 'test']);
+
+    //========================================================================================================//================================================================================================================================================================================================================
+
+    // localization
+    Route::get('localizationExample/{lang}', function ($lang) {
+        App::setlocale($lang);
+        return view('localization');
+    });
+
+    //========================================================================================================//================================================================================================================================================================================================================
+    // Error logging
+
+// Route::get('checkerrorlog',function(){
+//      Log::info("Log Pade che ke nahi..");
 // });
 
-// 2) Return a array
-// Route::get('response',function(){
-//    return ['first','second',3,4,"five","six","seven"];
-// });
-
-//3) Using response()
-// Route::get('response',function(){
-//    dd(response("this is response using response method"));
-// });
-
-//4) Using response() pass header
-// Route::get('response',function(){
-//    dd(response("this is response using response method")
-//    ->header('Content-Type',"application/json"))
-//    ->header('Authorization', 'token');
-// });
-
-//5) if we want to pass multiple header then we can pass it using withheader()
-// Route::get('response',function(){
-//     return dd(response("this is simple response using response method with headers")->withHeaders([
-//         'Content-Type'=>"application/json",
-//         'Authorization'=> 'token'
-//     ]));
-// });
-
-// 6) set cookie in response
-// Route::get('response',function(){
-//     return dd(response("this is simple response using response method with headers")->withCookie('userName','Rutul Sheladiya',180));
-// });
-
-// 7) redirect('viewname') => it is used to redirect on the other page.
-
-Route::view('/response','response');
-Route::get('dataresponse',[ResponseController::class,'index']);
-Route::get('registerTest',[register::class,'test']);
-
-//========================================================================================================//================================================================================================================================================================================================================
-
-// localization
-Route::get('localizationExample/{lang}',function($lang){
-    App::setlocale($lang);
-    return view('localization');
+//create custom log
+Route::get('checkerrorlog',function(){
+ Log::channel('customlog')->info('custom log created');
 });
+
+//crete custom log in blade file
+// Route::get('checkerrorlog',function(){
+//   Log::channel('bladelog')->info("Custom Log Created In Blade File");
+// });
+
+// Route of custom log in blade file
+// Route::view('mylog','CustomLog/mylog');
+
