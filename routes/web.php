@@ -326,3 +326,7 @@ Route::get('fetchdata',[UserController::class,'fetchDbData']);
 //2) fetch data from table and stotre it in table in blade file
 //Route::view('studentlist', 'DatabaseData/studentlist');
 Route::get('studentlist',[DatabaseData::class,'fetchdata']);
+//========================================================================================================//================================================================================================================================================================================================================
+
+// * Query Builder *
+Route::get('querybuilder',[DatabaseData::class,'index']);
