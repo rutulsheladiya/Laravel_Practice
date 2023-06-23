@@ -33,7 +33,7 @@ class DatabaseData extends Controller
         // $data = DB::table('employee')->where('Department','IT')->value('FullName');
         // return $data;
 
-        // to retive a single row by it's id we can use find()
+        // to retive a single row by it's id we can use find() field nu name id hoy to j chalse
         // $data = DB::table('employee')->find(1007);
         // return $data;
 
@@ -91,8 +91,9 @@ class DatabaseData extends Controller
         #Select Statements
         // select specific column from the table
         // $data = DB::table('employee')->select('EmployeeId','FullName','Department')->get();
-        // return $data;
-        //dd($data);
+        // echo "<pre>";
+        // print_r($data);
+        // dd($data);
 
         // distinct()
         // $data = DB::table('employee')->select('Department')->distinct('Department')->get();
@@ -119,12 +120,12 @@ class DatabaseData extends Controller
         // dd($data);
 
         // select employee whoes name start with A.
-        // $data = DB::table('employee')->where('FullName','LIKE','a%')->get();
+        // $data = DB::table('employee')->where('FullName','LIKE','r%')->get();
         // dd($data);
 
 
         // orwhere => a orwhere clause or jevu j work karse
-        // $data = DB::table('employee')->select()->where('EmployeeId', '=', 1001)->orWhere('Age', '=', 27)->get();
+        // $data = DB::table('employee')->select()->where('EmployeeId', '=', 1001)->orWhere('Age', '=', 500)->get();
         // dd($data);
 
         // wherebetween(colname,[range]) between operator jevu kam karse. -jeni age 225 thi 30 ni vacche che ae badha return karse.
@@ -164,7 +165,7 @@ class DatabaseData extends Controller
         // $data = DB::table('employee')->select()->whereNotNull("FullName")->get();
         // dd($data);
 
-        //whereDate
+        //whereDate(colname,date)
         // $data = DB::table('employee')->select()->whereDate('BirthDate', '2050-12-04')->get();
         // dd($data);
 
