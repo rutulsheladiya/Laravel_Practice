@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Rutul",
+        "email": "Rutulsheladiya2@gmail.com",
+        "password": "hello",
+        "mobileno": 8320893080,
+        "birthdate": "2001/08/25",
+        "city": "Surat",
+        "state": "Gujarat",
+        "country": "India"
+    },
+    {
+        "name": "Ravi",
+        "email": "ravi@gmail.com",
+        "password": "ravi",
+        "mobileno": 7896541230,
+        "birthdate": "2002/07/04",
+        "city": "Surat",
+        "state": "Gujarat",
+        "country": "India"
+    },
+    {
+        "name": "Dhenish",
+        "email": "Dhenish@gmail.com",
+        "password": "Dhrenish",
+        "mobileno": 7412369852,
+        "birthdate": "2001/01/15",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "country": "India"
+    },
+    {
+        "name": "Purvish",
+        "email": "purvish@gmail.com",
+        "password": "Purvish",
+        "mobileno": 1230478965,
+        "birthdate": "2004/12/01",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "country": "India"
+    },
+    {
+        "name": "Sumit",
+        "email": "sumit@gmail.com",
+        "password": "sumit",
+        "mobileno": 1234567890,
+        "birthdate": "1978/12/23",
+        "city": "Jaipur",
+        "state": "Rajasthan",
+        "country": "India"
+    }
+]
