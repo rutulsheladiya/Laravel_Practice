@@ -1,4 +1,4 @@
-<ul>
+    <ul>
     <li>
         <a href="{{url('/')}}/first">First</a>
         <a href="{{url('/')}}/second">Second</a>

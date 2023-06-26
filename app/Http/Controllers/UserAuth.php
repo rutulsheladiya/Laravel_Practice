@@ -14,6 +14,9 @@ class UserAuth extends Controller
         $request->session()->put('username', $request->username);
         $request->session()->put('role', $request->role);
         //$request->session(['username' => $request->username, 'role' => $request->role]);
+        // echo "<pre>";
+        // print_r(session()->all());
+        session()->flash('message', 'login successfully.');
         return redirect('profile');
 
         // session Has()

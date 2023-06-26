@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password')->invisible()->nullable();
             $table->string('name');
-            $table->float('percentage',3,2)->comment("this column for percentage");
+            $table->float('percentage', 3, 2)->comment("this column for percentage");
             $table->integer('age')->unsigned();
             $table->string('city')->default('No City');
             $table->timestamps();

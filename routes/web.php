@@ -197,7 +197,8 @@ use Illuminate\Support\Facades\Log;
     Route::get('/logout', function () {
         if (session()->has('username')) {
             // session()->pull('username',null);
-            session()->flush();
+           // session()->forget(['username','role']);
+             session()->flush();
             return redirect('login');
         }
     });
