@@ -226,7 +226,7 @@ use Illuminate\Support\Facades\Log;
     //========================================================================================================
     //Request Page Route
     Route::view('request', 'Request/request');
-    Route::post('sendRequestdata', [RequestController::class, 'requestData']);
+    //Route::post('sendRequestdata', [RequestController::class, 'requestData']);
 
     // pass id from the router and catch it in the controller
     //Route::get('sendRequestdata/{id}',[RequestController::class,'Index2']);

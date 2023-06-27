@@ -9,9 +9,9 @@ class RequestController extends Controller
 {
     public function requestData(Request $request)
     {
-        //dd($request);
-        //dd($request->path()); // kaya route upar thi request ave che te path apse. sendRequestdata
-        // dd($request->url());  // current url return karse. http://127.0.0.1:8000/sendRequestdata
+        //dd($request->input());
+        // dd($request->path()); // kaya route upar thi request ave che te path apse. sendRequestdata
+        //dd($request->url());  // current url return karse. http://127.0.0.1:8000/sendRequestdata
         //dd($request->method());  // je request ave che teni method kai che get ke post te return karse. POST
 
         // - isMethod() thi apde check kari shakiye je request ma method aveli che tena upr shu task perform karva che te
@@ -31,36 +31,36 @@ class RequestController extends Controller
         // } // accepts method no use thase ke apde specific format na data j jota hoy to je data male che tene check karva mate accepts method use thase.
 
         //dd($request->query()); // jo url ma jetli value ave che te badhi fetch karvi hoy to query() array na form ma badhu quuery string return karse.
-        //dd($request->query('name','default set'));  //url ma je query string or id haise tene fetch karse. jo url ma kai nai hoy to null apde pan apde default pan set kari shakiye.
-        dd($request->host());
+        //dd($request->query());  //get method haise to j data accept. kre  url ma je query string or id haise tene fetch karse. jo url ma kai nai hoy to null apde pan apde default pan set kari shakiye.
+        //dd($request->host());
     }
-    public function Index2(Request $request, $id)
-    {
-        dd($id);
-    }
+    // public function Index2(Request $request, $id)
+    // {
+    //     dd($id);
+    // }
 
 
     // path Inspection | url ma must admin thi start j thavu joiye
-    public function Index3(Request $request)
-    {
-        if ($request->is('admin/*')) {
-            dd("admin area");
-        } else {
-            dd("Guest area");
-        }
-    }
+    // public function Index3(Request $request)
+    // {
+    //     if ($request->is('admin/*')) {
+    //         dd("admin area");
+    //     } else {
+    //         dd("Guest area");
+    //     }
+    // }
 
     // for name route
-    public function Index4(Request $request)
-    {
-        if ($request->routeIs('adminn.*')) {
-            dd("admin area for name route");
-        } else {
-            dd("Guest area for name route");
-        }
+    // public function Index4(Request $request)
+    // {
+    //     if ($request->routeIs('adminn.*')) {
+    //         dd("admin area for name route");
+    //     } else {
+    //         dd("Guest area for name route");
+    //     }
 
-        // dd($request->routeIs('adminn.one'));  => jo name route sathe mathch thase to true apse nkr false
-    }
+    //     // dd($request->routeIs('adminn.one'));  => jo name route sathe mathch thase to true apse nkr false
+    // }
 
     public function getFormData(Request $request)
     {
@@ -80,9 +80,9 @@ class RequestController extends Controller
 
 
         // * fetch img from input * //
-        // dump($request->file('profile'));
-        // dump($request->profile);
-        //echo $request->profile;
+        //dump($request->file('profile'));
+        //  dump($request->profile);
+        // echo $request->profile;
         // if($request->file('profile')->isValid()){
         //     echo "valid";
         // }else{
@@ -117,6 +117,6 @@ class RequestController extends Controller
         //     $path = $file->store('Media');
         //     $paths[] = $path;
         // }
-        // print_r($path);
+        // print_r($paths);
     }
 }

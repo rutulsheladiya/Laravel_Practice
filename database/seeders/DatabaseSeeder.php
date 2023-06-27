@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Register;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,8 +20,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call([
-            EmployeeSeeder::class
-        ]);
+        // used for seeding
+        // $this->call([
+        //     EmployeeSeeder::class
+        // ]);
+
+        Register::factory(10)->create();
+
     }
 }
