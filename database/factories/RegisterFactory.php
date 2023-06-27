@@ -27,7 +27,7 @@ class RegisterFactory extends Factory
             'city'=>fake()->city(),
             'state'=>fake()->state(),
             'country'=>fake()->country(),
-            'profile'=>fake()->image(null, 640, 480)
+            'profile'=>fake()->imageUrl(360, 360, 'animals', true, 'dogs', true)
         ];
     }
 }

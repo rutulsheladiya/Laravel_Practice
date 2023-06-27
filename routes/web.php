@@ -14,6 +14,7 @@
     use Symfony\Component\Routing\RequestContext;
     use App\Http\Controllers\ResponseController;
     use App\Http\Controllers\DatabaseData;
+    use App\Http\Controllers\factorydata;
 use Illuminate\Support\Facades\Log;
 
     // use App\Http\Middleware\CheckAge;
@@ -331,3 +332,9 @@ Route::get('studentlist',[DatabaseData::class,'fetchdata']);
 
 // * Query Builder *
 Route::get('querybuilder',[DatabaseData::class,'index']);
+
+//========================================================================================================//================================================================================================================================================================================================================
+
+// * Factory Data Fetch *
+Route::view('factorydata', 'Factory/factorydata');
+Route::get('factorydata',[factorydata::class,'fetchFactoryData']);
