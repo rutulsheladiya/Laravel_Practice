@@ -61,7 +61,7 @@ class EmployeeSeeder extends Seeder
 
 
         // Fake Data
-        for($i=1;$i<10;$i++){
+        for($i=1;$i<=50;$i++){
             employee::create([
                 'name'=>fake()->name(),
                 'email'=>fake()->email(),

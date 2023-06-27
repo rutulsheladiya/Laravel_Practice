@@ -15,7 +15,8 @@
     use App\Http\Controllers\ResponseController;
     use App\Http\Controllers\DatabaseData;
     use App\Http\Controllers\factorydata;
-use Illuminate\Support\Facades\Log;
+    use App\Http\Controllers\seederdata;
+    use Illuminate\Support\Facades\Log;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -198,8 +199,8 @@ use Illuminate\Support\Facades\Log;
     Route::get('/logout', function () {
         if (session()->has('username')) {
             // session()->pull('username',null);
-           // session()->forget(['username','role']);
-             session()->flush();
+            // session()->forget(['username','role']);
+            session()->flush();
             return redirect('login');
         }
     });
@@ -302,39 +303,45 @@ use Illuminate\Support\Facades\Log;
     //========================================================================================================//================================================================================================================================================================================================================
     // Error logging
 
-// Route::get('checkerrorlog',function(){
-//      Log::info("Log Pade che ke nahi..");
-// });
+    // Route::get('checkerrorlog',function(){
+    //      Log::info("Log Pade che ke nahi..");
+    // });
 
-//create custom log
-Route::get('checkerrorlog',function(){
- Log::channel('customlog')->info('custom log created');
-});
+    //create custom log
+    Route::get('checkerrorlog', function () {
+        Log::channel('customlog')->info('custom log created');
+    });
 
-//crete custom log in blade file
-// Route::get('checkerrorlog',function(){
-//   Log::channel('bladelog')->info("Custom Log Created In Blade File");
-// });
+    //crete custom log in blade file
+    // Route::get('checkerrorlog',function(){
+    //   Log::channel('bladelog')->info("Custom Log Created In Blade File");
+    // });
 
-// Route of custom log in blade file
-// Route::view('mylog','CustomLog/mylog');
+    // Route of custom log in blade file
+    // Route::view('mylog','CustomLog/mylog');
 
-//========================================================================================================//================================================================================================================================================================================================================
-//========================================================================================================//================================================================================================================================================================================================================
-//1) fetch data from database using controller
-Route::get('fetchdata',[UserController::class,'fetchDbData']);
+    //========================================================================================================//================================================================================================================================================================================================================
+    //========================================================================================================//================================================================================================================================================================================================================
+    //1) fetch data from database using controller
+    Route::get('fetchdata', [UserController::class, 'fetchDbData']);
 
 
-//2) fetch data from table and stotre it in table in blade file
-//Route::view('studentlist', 'DatabaseData/studentlist');
-Route::get('studentlist',[DatabaseData::class,'fetchdata']);
-//========================================================================================================//================================================================================================================================================================================================================
+    //2) fetch data from table and stotre it in table in blade file
+    //Route::view('studentlist', 'DatabaseData/studentlist');
+    Route::get('studentlist', [DatabaseData::class, 'fetchdata']);
+    //========================================================================================================//================================================================================================================================================================================================================
 
-// * Query Builder *
-Route::get('querybuilder',[DatabaseData::class,'index']);
+    // * Query Builder *
+    Route::get('querybuilder', [DatabaseData::class, 'index']);
 
-//========================================================================================================//================================================================================================================================================================================================================
+    //========================================================================================================//================================================================================================================================================================================================================
 
-// * Factory Data Fetch *
-Route::view('factorydata', 'Factory/factorydata');
-Route::get('factorydata',[factorydata::class,'fetchFactoryData']);
+    // * Factory Data Fetch *
+    Route::view('factorydata', 'Factory/factorydata');
+    Route::get('factorydata', [factorydata::class, 'fetchFactoryData']);
+
+    //========================================================================================================//================================================================================================================================================================================================================
+
+    // * Seeder Data Fetch *
+    Route::view('seederdata', 'seederdata/seederdata');
+    Route::get('seederdata', [seederdata::class, 'Index']);

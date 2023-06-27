@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         //     EmployeeSeeder::class
         // ]);
 
-        Register::factory(50)->create();
+        // Register::factory(50)->create();
 
     }
 }
