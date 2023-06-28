@@ -15,7 +15,7 @@
     use App\Http\Controllers\ResponseController;
     use App\Http\Controllers\DatabaseData;
     use App\Http\Controllers\factorydata;
-    use App\Http\Controllers\seederdata;
+    use App\Http\Controllers\EmployeeController;
     use Illuminate\Support\Facades\Log;
 
     // use App\Http\Middleware\CheckAge;
@@ -228,7 +228,7 @@
     //========================================================================================================
     //Request Page Route
     Route::view('request', 'Request/request');
-    //Route::post('sendRequestdata', [RequestController::class, 'requestData']);
+   // Route::post('sendRequestdata', [RequestController::class, 'requestData']);
 
     // pass id from the router and catch it in the controller
     //Route::get('sendRequestdata/{id}',[RequestController::class,'Index2']);
@@ -344,4 +344,4 @@
 
     // * Seeder Data Fetch *
     Route::view('seederdata', 'seederdata/seederdata');
-    Route::get('seederdata', [seederdata::class, 'Index']);
+    Route::get('seederdata', [EmployeeController::class, 'Index']);
