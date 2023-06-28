@@ -118,5 +118,8 @@ class RequestController extends Controller
         //     $paths[] = $path;
         // }
         // print_r($paths);
+
+        session()->flash('status','submit successfully');
+        return redirect('request');
     }
 }

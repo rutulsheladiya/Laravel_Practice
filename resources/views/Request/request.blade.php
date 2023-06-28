@@ -15,3 +15,6 @@
     <input type="file" name="profile[]" multiple><br><br>
     <button type="submit">Submit</button>
 </form>
+@if(session()->has('status'))
+{{session('status')}}
+@endif
