@@ -17,6 +17,7 @@
     use App\Http\Controllers\factorydata;
     use App\Http\Controllers\EmployeeController;
     use Illuminate\Support\Facades\Log;
+    use App\Http\Controllers\ColletionController;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -345,3 +346,9 @@
     // * Seeder Data Fetch *
     Route::view('seederdata', 'seederdata/seederdata');
     Route::get('seederdata', [EmployeeController::class, 'Index']);
+
+   //========================================================================================================//================================================================================================================================================================================================================
+   
+   // * Collections Different Methods *
+   Route::get('collectionMethods',[ColletionController::class,'Index']);
+ 
