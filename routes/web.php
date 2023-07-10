@@ -18,6 +18,7 @@
     use App\Http\Controllers\EmployeeController;
     use Illuminate\Support\Facades\Log;
     use App\Http\Controllers\ColletionController;
+    use App\Http\Controllers\PersonalController;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -351,3 +352,8 @@
 
    // * Collections Different Methods *
    Route::get('collectionMethods',[ColletionController::class,'Index']);
+
+   //========================================================================================================//================================================================================================================================================================================================================
+
+   //*  Serialization *
+   Route::get('serialization',[PersonalController::class,'Serialization']);

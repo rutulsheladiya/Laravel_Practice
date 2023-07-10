@@ -143,7 +143,7 @@ class PersonalController extends Controller
             $personal->delete($id);
             return response()->json([
                 'status' => 200,
-                'message' => 'reord deleted...'
+                'message' => 'record deleted...'
             ], 200);
         } else {
             return response()->json([
@@ -151,5 +151,22 @@ class PersonalController extends Controller
                 'message' => 'record not found.'
             ], 404);
         }
+    }
+
+    function Serialization()
+    {
+        // Array
+        // $data = Personal::all();
+        // $AryData = $data->toArray();
+        // // dd($AryData);
+        // return view('Serialization', ['collect' => $AryData]);
+
+        // json
+        $data = Personal::all();
+        $jsonData = $data->tojson();
+        // dd($AryData);
+        $arr = json_decode($jsonData); // convert json data to php obj
+        // dd($arr);
+        return view('Serialization', ['collect' => $arr]);
     }
 }
