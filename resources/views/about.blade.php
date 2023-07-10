@@ -1,3 +1,4 @@
+{{$key}}
 <x-Header/>
 <!DOCTYPE html>
 <html lang="en">

@@ -3,5 +3,6 @@
 
 <form action="{{url('/')}}/product" method="POST">
     @csrf
+    <input type="text" name="" id="">
     <button>Submit</button>
 </form>
