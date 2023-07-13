@@ -19,6 +19,7 @@
     use Illuminate\Support\Facades\Log;
     use App\Http\Controllers\ColletionController;
     use App\Http\Controllers\PersonalController;
+use Illuminate\Support\Facades\Artisan;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -357,3 +358,9 @@
 
    //*  Serialization *
    Route::get('serialization',[PersonalController::class,'Serialization']);
+
+
+   Route::get('/execCmd',function(){
+    $res = Artisan::call('cmd');
+    dump($res);
+   });
