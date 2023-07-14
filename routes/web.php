@@ -7,7 +7,7 @@
     use Illuminate\Http\Request;
     use App\Http\Controllers\register;
     use App\Models\Product;
-
+    use App\Models\Personal;
     use App\Http\Controllers\UserAuth;
     use App\Http\Controllers\StoreController;
     use App\Http\Controllers\RequestController;
@@ -19,7 +19,9 @@
     use Illuminate\Support\Facades\Log;
     use App\Http\Controllers\ColletionController;
     use App\Http\Controllers\PersonalController;
-use Illuminate\Support\Facades\Artisan;
+    use App\Mail\Welcome;
+    use Illuminate\Support\Facades\Artisan;
+    use Illuminate\Support\Facades\Mail;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -299,7 +301,7 @@ use Illuminate\Support\Facades\Artisan;
 
     // localization
     Route::get('localizationExample/{lang}', function ($lang) {
-        App::setlocale($lang);
+        // App::setlocale($lang);
         return view('localization');
     });
 
@@ -363,4 +365,9 @@ use Illuminate\Support\Facades\Artisan;
    Route::get('/execCmd',function(){
     $res = Artisan::call('cmd');
     dump($res);
+   });
+
+   Route::get('/sendMail',function(){
+    $user = Personal::where('name','Dhenish')->first();
+    Mail::to("rutulsheladiya2731@gmail.com")->send(new Welcome($user));
    });
