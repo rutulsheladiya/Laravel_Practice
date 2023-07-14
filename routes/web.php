@@ -19,7 +19,8 @@
     use Illuminate\Support\Facades\Log;
     use App\Http\Controllers\ColletionController;
     use App\Http\Controllers\PersonalController;
-    use App\Mail\Welcome;
+use App\Jobs\sendmail;
+use App\Mail\Welcome;
     use Illuminate\Support\Facades\Artisan;
     use Illuminate\Support\Facades\Mail;
 
@@ -370,4 +371,14 @@
    Route::get('/sendMail',function(){
     $user = Personal::where('name','Dhenish')->first();
     Mail::to("rutulsheladiya2731@gmail.com")->send(new Welcome($user));
+   });
+
+   Route::get('/sendMailall',function(){
+    // $users = Personal::all();
+    // foreach($users as $user){
+    //   sendmail::dispatch($user)->delay(now()->addMinutes(2));
+    // }
+    $user = Personal::where('name','Rutul Sheladiya')->first();
+    sendmail::dispatch($user);
+     return "mail Sending...........................";
    });
