@@ -20,7 +20,8 @@
     use App\Http\Controllers\ColletionController;
     use App\Http\Controllers\PersonalController;
     use App\Jobs\sendmail;
-    use App\Mail\Welcome;
+use App\Mail\sendtestemail;
+use App\Mail\Welcome;
     use Illuminate\Support\Facades\Artisan;
     use Illuminate\Support\Facades\Mail;
 
@@ -383,3 +384,13 @@
         sendmail::dispatch($user);
         return "mail Sending...........................";
     });
+
+        //========================================================================================================//================================================================================================================================================================================================================
+   Route::get('testemail',function(){
+    //  Mail::to('dhenishjivani@gmail.com')->send(new sendtestemail);
+    //  return view('email.testemail');
+
+      $data = Personal::where("id",3)->first();
+      Mail::to($data)->send(new sendtestemail($data));
+      return "Mail Send";
+   });
