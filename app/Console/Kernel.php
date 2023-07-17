@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\sendemailtest;
 use App\Jobs\sendmail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -14,9 +15,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('chagan')->everyMinute();
-        $user = Personal::where('name','Rutul Sheladiya')->first();
-        $schedule->job(new sendmail($user))->everyMinute();
+        // $schedule->command('chagan')->everyMinute();
+        // $user = Personal::where('name','Rutul Sheladiya')->first();
+        // $schedule->job(new sendmail($user))->everyMinute();
+
+        $data = Personal::where("id",6)->first();
+        $schedule->job(new sendemailtest($data))->everyMinute();
     }
 
     /**

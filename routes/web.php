@@ -19,7 +19,8 @@
     use Illuminate\Support\Facades\Log;
     use App\Http\Controllers\ColletionController;
     use App\Http\Controllers\PersonalController;
-    use App\Jobs\sendmail;
+use App\Jobs\sendemailtest;
+use App\Jobs\sendmail;
 use App\Mail\sendtestemail;
 use App\Mail\Welcome;
     use Illuminate\Support\Facades\Artisan;
@@ -390,7 +391,12 @@ use App\Mail\Welcome;
     //  Mail::to('dhenishjivani@gmail.com')->send(new sendtestemail);
     //  return view('email.testemail');
 
-      $data = Personal::where("id",3)->first();
-      Mail::to($data)->send(new sendtestemail($data));
-      return "Mail Send";
+    // without quque
+    //   $data = Personal::where("id",3)->first();
+    //   Mail::to($data)->send(new sendtestemail($data));
+    //   return "Mail Send";
+
+    $data = Personal::where("id",6)->first();
+    sendemailtest::dispatch($data);
+    return "Mail Send";
    });
