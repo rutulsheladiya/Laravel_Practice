@@ -18,12 +18,12 @@ class sendmail implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
 
-    public $tries=3;
+    // public $tries=3;
 
-    public function retryUntil()
-    {
-        return now()->addSeconds(15);
-    }
+    // public function retryUntil()
+    // {
+    //     return now()->addSeconds(15);
+    // }
     /**
      * Create a new job instance.
      */
@@ -37,8 +37,8 @@ class sendmail implements ShouldQueue
      */
     public function handle(): void
     {
-        throw new Exception;
+        // throw new Exception;
         Mail::to($this->personal->email)->send(new Welcome($this->personal));
-        $this->release(now()->addSeconds(20));
+        // $this->release(now()->addSeconds(20));
     }
 }

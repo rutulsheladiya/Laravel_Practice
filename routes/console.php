@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -22,6 +22,10 @@ Artisan::command('chat',function(){
    $this->line('chat command Executed');
 })->purpose('chat command is for testing');
 
+
+Artisan::command('chagan',function(){
+  Log::channel('customlog')->info('chagan hale che');
+});
 // Artisan::command('chat',function() {
 //     $this->info("Hello, good evening!");
 //     $name =  $this->ask("What is your name?");

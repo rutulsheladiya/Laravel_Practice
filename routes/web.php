@@ -19,8 +19,8 @@
     use Illuminate\Support\Facades\Log;
     use App\Http\Controllers\ColletionController;
     use App\Http\Controllers\PersonalController;
-use App\Jobs\sendmail;
-use App\Mail\Welcome;
+    use App\Jobs\sendmail;
+    use App\Mail\Welcome;
     use Illuminate\Support\Facades\Artisan;
     use Illuminate\Support\Facades\Mail;
 
@@ -234,7 +234,7 @@ use App\Mail\Welcome;
     //========================================================================================================
     //Request Page Route
     Route::view('request', 'Request/request');
-   // Route::post('sendRequestdata', [RequestController::class, 'requestData']);
+    // Route::post('sendRequestdata', [RequestController::class, 'requestData']);
 
     // pass id from the router and catch it in the controller
     //Route::get('sendRequestdata/{id}',[RequestController::class,'Index2']);
@@ -352,33 +352,34 @@ use App\Mail\Welcome;
     Route::view('seederdata', 'seederdata/seederdata');
     Route::get('seederdata', [EmployeeController::class, 'Index']);
 
-   //========================================================================================================//================================================================================================================================================================================================================
+    //========================================================================================================//================================================================================================================================================================================================================
 
-   // * Collections Different Methods *
-   Route::get('collectionMethods',[ColletionController::class,'Index']);
+    // * Collections Different Methods *
+    Route::get('collectionMethods', [ColletionController::class, 'Index']);
 
-   //========================================================================================================//================================================================================================================================================================================================================
+    //========================================================================================================//================================================================================================================================================================================================================
 
-   //*  Serialization *
-   Route::get('serialization',[PersonalController::class,'Serialization']);
+    //*  Serialization *
+    Route::get('serialization', [PersonalController::class, 'Serialization']);
 
 
-   Route::get('/execCmd',function(){
-    $res = Artisan::call('cmd');
-    dump($res);
-   });
+    Route::get('/execCmd', function () {
+        $res = Artisan::call('cmd');
+        dump($res);
+    });
 
-   Route::get('/sendMail',function(){
-    $user = Personal::where('name','Dhenish')->first();
-    Mail::to("rutulsheladiya2731@gmail.com")->send(new Welcome($user));
-   });
+    // without queue and job
+    Route::get('/sendMail', function () {
+        $user = Personal::where('name', 'Dhenish')->first();
+        Mail::to("rutulsheladiya2731@gmail.com")->send(new Welcome($user));
+    });
 
-   Route::get('/sendMailall',function(){
-    // $users = Personal::all();
-    // foreach($users as $user){
-    //   sendmail::dispatch($user)->delay(now()->addMinutes(2));
-    // }
-    $user = Personal::where('name','Rutul Sheladiya')->first();
-    sendmail::dispatch($user);
-     return "mail Sending...........................";
-   });
+    Route::get('/sendMailall', function () {
+        // $users = Personal::all();
+        // foreach($users as $user){
+        //   sendmail::dispatch($user)->delay(now()->addMinutes(2));
+        // }
+        $user = Personal::where('name', 'Rutul Sheladiya')->first();
+        sendmail::dispatch($user);
+        return "mail Sending...........................";
+    });
