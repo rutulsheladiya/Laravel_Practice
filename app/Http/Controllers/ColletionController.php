@@ -163,4 +163,10 @@ class ColletionController extends Controller
         $spliceData =$data->splice(4,2,[50,60]); //removed(5,6 & added 50 ,60)
         dump($data->all());
     }
+
+    function test(){
+        // return "hello";
+        // return redirect('invokablecontroller');
+        return view('about');
+    }
 }

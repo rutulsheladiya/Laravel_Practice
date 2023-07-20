@@ -26,6 +26,7 @@
     use Illuminate\Support\Facades\Artisan;
     use Illuminate\Support\Facades\Mail;
     use App\Http\Controllers\InvokableController;
+use Faker\Test\Provider\Collection;
 
     // use App\Http\Middleware\CheckAge;
     /*
@@ -405,3 +406,6 @@
            //========================================================================================================//================================================================================================================================================================================================================
 // Invokable Controller Route
 Route::get('invokablecontroller',InvokableController::class);
+
+
+Route::get('contactus',[ColletionController::class,'test']);
