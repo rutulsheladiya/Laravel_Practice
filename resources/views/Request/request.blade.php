@@ -6,7 +6,7 @@
 
 
 {{-- request Input --}}
-<form action="{{ url('/') }}/sendinputdata/" method="post" enctype="multipart/form-data">
+<form action="{{ url('/') }}/sendinputdata/" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="text" placeholder="Enter name" name="username" value="{{ old('username') }}"> <br><br>
     <input type="email" placeholder="Enter name" name="email"><br><br>

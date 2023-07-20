@@ -80,7 +80,7 @@ class RequestController extends Controller
 
 
         // * fetch img from input * //
-        //dump($request->file('profile'));
+       // dump($request->file('profile'));
         //  dump($request->profile);
         // echo $request->profile;
         // if($request->file('profile')->isValid()){
@@ -113,13 +113,14 @@ class RequestController extends Controller
 
         // * store multiple image in folder * //
         // dump($request->file('profile'));
-        // foreach ($request->file('profile') as $file) {
-        //     $path = $file->store('Media');
-        //     $paths[] = $path;
-        // }
-        // print_r($paths);
+        //dd($request->profile); // getting multiple img from frontend
+        foreach ($request->profile as $file) {
+            $path = $file->store('Media');
+            $paths[] = $path;
+        }
+        print_r($paths);
 
-        session()->flash('status','submit successfully');
-        return redirect('request');
+        // session()->flash('status','submit successfully');
+        // return redirect('request');
     }
 }
